@@ -9,36 +9,36 @@
           </v-card-text>
         </v-card>
 
-        <v-container fluid>
-      <v-card flat class="d-flex flex-wrap justify-center transparent">
-        <v-card flat class="transparent text-centered mx-10" width="240">
-          <ContactUs :contact.sync="contactClicked" />
-          <v-card-title>
-            <h3>{{ howToConnect.items[0].title }}</h3>
-          </v-card-title>
-          <v-card-text>
-            <p>{{ howToConnect.items[0].text }}</p>
-          </v-card-text>
-        </v-card>
-        <v-card flat class="transparent text-centered mx-10" width="240">
-          <GetConnected :connect.sync="connectClicked" />
-          <v-card-title>
-            <h3>{{ howToConnect.items[1].title }}</h3>
-          </v-card-title>
-          <v-card-text>
-            <p>{{ howToConnect.items[1].text }}</p>
-          </v-card-text>
-        </v-card>
-        <v-card flat class="transparent text-centered mx-10" width="240">
-          <Enjoy/>
-          <v-card-title with="100%">
-            <h3>{{ howToConnect.items[2].title }}</h3>
-          </v-card-title>
-          <v-card-text>
-            <p>{{ howToConnect.items[2].text }}</p>
-          </v-card-text>
-        </v-card>
-      </v-card>
+        <v-container fluid class="mt-5 mb-12">
+          <v-card flat class="d-flex flex-wrap justify-center transparent">
+            <v-card flat class="transparent text-centered mx-10" width="240">
+              <ContactUs :contact.sync="contactClicked" />
+              <v-card-title>
+                <h3>{{ howToConnect.items[0].title }}</h3>
+              </v-card-title>
+              <v-card-text>
+                <p>{{ howToConnect.items[0].text }}</p>
+              </v-card-text>
+            </v-card>
+            <v-card flat class="transparent text-centered mx-10" width="240">
+              <GetConnected :connect.sync="connectClicked" />
+              <v-card-title>
+                <h3>{{ howToConnect.items[1].title }}</h3>
+              </v-card-title>
+              <v-card-text>
+                <p>{{ howToConnect.items[1].text }}</p>
+              </v-card-text>
+            </v-card>
+            <v-card flat class="transparent text-centered mx-10" width="240">
+              <Enjoy/>
+              <v-card-title with="100%">
+                <h3>{{ howToConnect.items[2].title }}</h3>
+              </v-card-title>
+              <v-card-text>
+                <p>{{ howToConnect.items[2].text }}</p>
+              </v-card-text>
+            </v-card>
+          </v-card>
     </v-container>
   </v-container>
 </template>

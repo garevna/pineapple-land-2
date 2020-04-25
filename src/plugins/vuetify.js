@@ -8,7 +8,9 @@ export default new Vuetify({
   icons: {
     iconfont: 'mdi',
     values: {
-      expand: 'mdi-expand-more',
+      expand: 'mdi-chevron-down',
+      valid: 'mdi-check-bold',
+      invalid: 'mdi-alert-outline',
       home: 'mdi-home-circle'
     }
   },

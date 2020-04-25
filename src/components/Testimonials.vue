@@ -1,15 +1,15 @@
 <template>
   <v-container fluid class="homefone">
 
-    <v-card flat class="transparent mx-auto my-12 text-center" max-width="1360">
+    <v-card flat class="transparent mx-auto mt-12 mb-0 text-center" max-width="1360">
       <v-card-title class="text-center" max-width="940">
-        <h1 style="width: 100%; text-align: center">{{ content.header }}</h1>
+        <h2 style="width: 100%; text-align: center">{{ content.header }}</h2>
       </v-card-title>
 
       <v-slide-group
         v-if="screen >= 600"
         v-model="model"
-        class="pa-4"
+        class="pa-12"
         center-active
         show-arrows
       >
@@ -50,7 +50,7 @@
             height="340"
             width="100%"
             light
-            class="testimonials transparent"
+            class="testimonials transparent my-10"
       >
         <v-carousel-item
           v-for="(testimonial, index) in testimonials"
@@ -69,14 +69,14 @@
         </v-carousel-item>
       </v-carousel>
     </v-card>
-    <v-card-text class="text-center text-md-left">
+    <v-card-text class="text-center">
       <v-btn
           color="buttons"
           dark
           rounded
           width="220"
           height="48"
-          class="px-auto mx-auto"
+          class="submit-button px-auto mx-auto"
           @click="action"
       >
           {{ content.button }}

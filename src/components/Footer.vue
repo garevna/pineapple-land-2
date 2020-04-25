@@ -7,9 +7,9 @@
           <h2 class="white-text centered">{{ footer.topHead }}</h2>
         </v-card-title>
         <v-card-text max-width="100%">
-          <h4 class="white-text centered">
+          <h5 class="white-text centered">
               {{ footer.topText }}
-          </h4>
+          </h5>
         </v-card-text>
         <v-row class="mx-auto">
           <v-col cols="12" class="mx-auto">

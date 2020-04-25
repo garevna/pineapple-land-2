@@ -48,6 +48,28 @@ const state = {
     header: 'Title around reviews',
     button: 'CTA'
   },
+  faq: {
+    header: 'Title around FAQ',
+    button: 'CTA',
+    items: [
+      {
+        question: 'Question 1',
+        answer: 'Answer 1...'
+      },
+      {
+        question: 'Question 2',
+        answer: 'Answer 2...'
+      },
+      {
+        question: 'Question 3',
+        answer: 'Answer 3...'
+      },
+      {
+        question: 'Question 4',
+        answer: 'Answer 4...'
+      }
+    ]
+  },
   footer: {
     topHead: 'READY TO GET STARTED?',
     topText: 'Leave your inquiry and we\'ll get back to you within 24 hours on business days'

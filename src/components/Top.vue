@@ -1,5 +1,5 @@
 <template>
-<v-container fluid style="overflow-x: hidden; margin-top: 160px;">
+<v-container fluid style="overflow-x: hidden; margin-top: 160px; margin-bottom: 64px;">
   <v-card flat class="mx-auto homefone" width="100%" max-width="1440">
     <v-row align="center" justify="center">
       <v-col sm="12" md="6">
@@ -19,7 +19,7 @@
                 rounded
                 width="220"
                 height="48"
-                class="px-auto mx-auto"
+                class="submit-button px-auto mx-auto"
                 @click="action"
             >
                 {{ top.button }}
@@ -38,6 +38,16 @@
 </template>
 
 <style scoped>
+.top-element {
+  margin-top: 120px;
+  margin-bottom: 64px;
+}
+@media screen and (max-width: 500px) {
+  .top-element {
+    margin-top: 80px;
+    margin-bottom: 48px;
+  }
+}
 </style>
 
 <script>

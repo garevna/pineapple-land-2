@@ -21,7 +21,7 @@
         {{ item.blackText }} <span style="color: #72BF44"> {{ item.greenText }}</span>
       </h5>
     </v-card-text>
-    <v-card-text>
+    <v-card-text class="my-12">
       <p class="small text-left">Pineapple NET is powered by
           <v-img src="@/assets/dgtek-logo.png" width="50" style="display: inline-block; vertical-align: middle;"></v-img>
       </p>

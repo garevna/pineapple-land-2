@@ -30,12 +30,12 @@
     </v-card-text>
     <v-card-actions class="text-center">
       <v-btn
+          color="buttons"
           dark
           rounded
-          width="100%"
+          width="220"
           height="48"
-          color="buttons"
-          class="submit-button"
+          class="submit-button px-auto mx-auto"
           @click="sendUserRequest"
       >
         {{ userForm.button }}
@@ -70,14 +70,6 @@ h4 {
   line-height: 100%;
   color: #656565;
 }
-.submit-button {
-  font-family: Gilroy;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px!important;
-  line-height: 100%;
-  text-transform: capitalize;
-}
 
 @media screen and (max-width: 600px) {
   .v-btn__content {
@@ -90,9 +82,6 @@ h4 {
   .user-inputs {
     font-size: 14px;
   }
-  .submit-button {
-    font-size: 16px;
-  }
 }
 @media screen and (max-width: 320px) {
   .user-info {
@@ -101,9 +90,6 @@ h4 {
   }
   .user-inputs {
     font-size: 13px;
-  }
-  .submit-button {
-    font-size: 14px;
   }
 }
 </style>

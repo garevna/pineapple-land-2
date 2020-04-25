@@ -6,7 +6,7 @@
 
       <!-- ============================= USER CONTACT ============================= -->
 
-      <v-row justify="center" class="pa-0 ma-0">
+      <v-row justify="center" class="pa-0 my-12">
         <v-sheet
           width="100%"
           max-width="1440"
@@ -42,6 +42,10 @@
       <v-row width="100%">
         <Testimonials />
       </v-row>
+      <!-- ============================= FAQ ============================= -->
+      <v-row width="100%">
+        <FAQ />
+      </v-row>
       <!-- ============================= FOOTER ============================= -->
       <section id="footer" class="homefone">
         <div class="base-title">
@@ -60,6 +64,7 @@
 html, body {
   width: 100%;
   max-width: 100%;
+  font-family: Gilroy;
 }
 
 .container,
@@ -79,6 +84,7 @@ h1, h2, h3, h4, h5 {
   line-height: 150%;
   letter-spacing: 0.02em;
   color: #000;
+  font-family: Gilroy;
 }
 h1 {
   font-size: 46px;
@@ -86,7 +92,7 @@ h1 {
 h2 {
   font-size: 32px;
   text-align: center;
-  width: 100%;
+  width: 150%;
 }
 h3 {
   font-size: 28px;
@@ -96,6 +102,9 @@ h4 {
 }
 h5 {
   font-size: 20px;
+}
+h4, h5 {
+  font-weight: 300;
 }
 
 p {
@@ -124,25 +133,45 @@ svg.defs-only {
 .user-contact {
   width: 640px;
 }
+.submit-button {
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px!important;
+  line-height: 100%;
+  text-transform: capitalize;
+}
 
-@media (max-width: "600px"), (max-height: "600px") {
+@media (max-width: 600px), (max-height: 600px) {
   h1 { font-size: 28px; }
   h2 { font-size: 24px; }
   h3 { font-size: 20px; }
-  h4, h5 { font-size: 18px; }
+  h4, h5 {
+    font-size: 18px;
+    font-weight: 200;
+  }
   p { font-size: 16px; }
   .user-contact {
     width: 480px;
   }
+  .submit-button {
+    font-size: 16px;
+  }
 }
 
-@media (max-width: '400px'), (max-height: '400px') {
+@media (max-width: 400px), (max-height: 400px) {
   h1 { font-size: 26px; }
   h2 { font-size: 24px; }
   h3 { font-size: 20px; }
-  h4, h5 { font-size: 16px; }
+  h4, h5 {
+    font-size: 16px;
+    font-weight: 100;
+  }
   .user-contact {
     width: 300px;
+  }
+  .submit-button {
+    font-size: 14px;
   }
 }
 
@@ -171,6 +200,7 @@ import Aside from '@/components/Aside.vue'
 import UserContact from '@/components/UserContact.vue'
 import HowToConnect from '@/components/HowToConnect.vue'
 import Testimonials from '@/components/Testimonials.vue'
+import FAQ from '@/components/FAQ.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
@@ -182,6 +212,7 @@ export default {
     UserContact,
     HowToConnect,
     Testimonials,
+    FAQ,
     Footer
   },
   data () {

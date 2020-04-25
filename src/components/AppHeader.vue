@@ -27,7 +27,7 @@
           v-model="panel"
           class="app-bar d-lg-none"
           width="100%"
-          style="position: fixed; margin-top: -8px; z-index: 10;"
+          style="position: fixed; margin-top: 40px; z-index: 10;"
   >
     <v-expansion-panel style="background: #FAFAFA">
       <v-expansion-panel-header
@@ -92,6 +92,7 @@
 </template>
 
 <style scoped>
+
 .v-btn-toggle > .v-btn.v-btn--active {
   color: #72BF44!important;
 }
