@@ -21,7 +21,7 @@
   </v-system-bar>
 
   <!-- Viewport width less then lg -->
-  <v-expansion-panels
+  <!-- <v-expansion-panels
           tile
           flat
           v-model="panel"
@@ -55,21 +55,21 @@
             </v-list>
       </v-expansion-panel-content>
     </v-expansion-panel>
-  </v-expansion-panels>
+  </v-expansion-panels> -->
 
   <!-- Viewport width wider or equal lg -->
-    <v-app-bar
-            app
-            fixed
+    <v-card
             height="80"
+            width="100%"
             flat
-            class="homefone app-bar d-none d-lg-block"
+            class="homefone app-bar mt-10 pt-4"
+            style="position: fixed; z-index: 5"
     >
-        <v-row align="center" justify="center">
+        <v-row align="center" justify="start">
           <span height="45" width="150" class="ml-10">
             <v-img src="@/assets/logo.svg" contain width="150" height="45"></v-img>
           </span>
-          <v-spacer></v-spacer>
+          <!-- <v-spacer></v-spacer>
       <v-btn-toggle
             group
             flat
@@ -85,9 +85,9 @@
           <ContactUs v-if="page === 'Contact Us'" style="width: 50px; height:50px;" />
               {{ page }}
         </v-btn>
-      </v-btn-toggle>
+      </v-btn-toggle> -->
     </v-row>
-  </v-app-bar>
+  </v-card>
 </v-container>
 </template>
 
@@ -117,54 +117,16 @@
   font-size: 16px;
   color: #ffffff;
 }
-.burger-menu {
-  height: 48px;
-  min-width: 48px!important;
-  max-width: 64px!important;
-}
-.burger-menu--first, .burger-menu--second,
-.burger-menu-active--first, .burger-menu-active--second {
-  position: absolute;
-  height:3px;
-  background: #20731C;
-  left: 0;
-  transition: all 0.5s;
-}
-.burger-menu--first {
-  width: 32px;
-  top: -8px;
-}
-.burger-menu--second {
-  width: 16px;
-  top: 2px;
-}
-.burger-menu-active--first {
-  top: 0;
-  width: 32px;
-  transform: rotate(-45deg);
-}
-.burger-menu-active--second {
-  top: 0;
-  width: 32px;
-  transform: rotate(45deg);
-}
-.main-menu-content {
-  background: #FAFAFA!important;
-}
-.main-menu-items {
-  font-size: 18px;
-  line-height: 40px;
-}
 </style>
 
 <script>
 
-import ContactUs from '@/components/svg/ContactUsIcon'
+// import ContactUs from '@/components/svg/ContactUsIcon'
 
 export default {
   name: 'AppHeader',
   components: {
-    ContactUs
+    // ContactUs
   },
   props: {
     pages: Array,

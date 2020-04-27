@@ -2,7 +2,15 @@
   <v-app class="homefone">
     <v-container fluid class="homefone">
       <AppHeader :pages="pages" :selected.sync="page"/>
-      <Top />
+      <v-sheet
+        width="100%"
+        max-width="1440"
+        color="homefone"
+        tile
+        class="mx-auto"
+      >
+        <Top />
+      </v-sheet>
 
       <!-- ============================= USER CONTACT ============================= -->
 
