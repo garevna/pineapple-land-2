@@ -17,10 +17,7 @@ export default new Vuex.Store({
     contactEndpoint: '',
     viewport: 'lg',
     viewportWidth: window.innerWidth,
-    viewportHeight: window.innerHeight,
-    plan: 'residential',
-    pages: ['Home', 'About Us', 'Residential', 'Business', 'Connect', 'Contact Us', 'Sign In'],
-    selectors: ['#top', '#about', '#plans', '#plans', '#connect', '#contact', null]
+    viewportHeight: window.innerHeight
   },
   modules,
 
@@ -28,7 +25,6 @@ export default new Vuex.Store({
     familyPicture: (state) => {
       const size = state.viewportWidth < 600 ? 'small' : state.viewportWidth < 1440 ? 'medium' : 'large'
       const num = location.hash ? location.hash.slice(1) : '1'
-      console.log(`${state.landhost}/img/family-${size}-${num}.png`)
       return `${state.landhost}/img/family-${size}-${num}.png`
     }
   },

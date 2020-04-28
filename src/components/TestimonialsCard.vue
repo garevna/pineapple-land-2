@@ -82,7 +82,7 @@ export default {
   },
   mounted () {
     const textElement = document.body.appendChild(document.createElement('p'))
-    textElement.style.marginTop = '-100px'
+    textElement.style.marginTop = '-1000px'
     textElement.style.width = (this.cardWidth - 40) + 'px'
     textElement.textContent = this.text
     this.ellipsis = textElement.offsetHeight > 86

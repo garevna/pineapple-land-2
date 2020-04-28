@@ -240,47 +240,47 @@ export default {
   },
   watch: {
     contactUs (val) {
-      if (val) this.$router.push({ name: 'contact' })
+      // if (val) this.$router.push({ name: 'contact' })
     },
     getConnected (val) {
-      if (val) this.$router.push({ name: 'connect' })
+      // if (val) this.$router.push({ name: 'connect' })
     },
     business (val) {
       if (val) {
-        this.page = this.pages.indexOf('Business')
+        // this.page = this.pages.indexOf('Business')
       }
     },
     residential (val) {
-      this.page = this.pages.indexOf('Residential')
+      // this.page = this.pages.indexOf('Residential')
     },
     page (val) {
-      if (this.selectors[val] === '#connect') {
-        if (this.addressAvalable) {
-          this.$router.push({ name: 'connect' })
-        } else {
-          this.$vuetify.goTo('#check', {
-            duration: 500,
-            offset: 200,
-            easing: 'easeInOutCubic'
-          })
-        }
-        this.page = undefined
-        return
-      }
-      if (this.selectors[val] === '#contact') {
-        this.$router.push({ name: 'contact' })
-        return
-      }
-      if (this.selectors[val] === '#plans') {
-        this.$store.commit('CHANGE_PLAN', this.pages[this.page].toLowerCase())
-      }
-      if (this.selectors[val]) {
-        this.$vuetify.goTo(this.selectors[val], {
-          duration: 500,
-          offset: 0,
-          easing: 'easeInOutCubic'
-        })
-      }
+    //   if (this.selectors[val] === '#connect') {
+    //     if (this.addressAvalable) {
+    //       this.$router.push({ name: 'connect' })
+    //     } else {
+    //       this.$vuetify.goTo('#check', {
+    //         duration: 500,
+    //         offset: 200,
+    //         easing: 'easeInOutCubic'
+    //       })
+    //     }
+    //     this.page = undefined
+    //     return
+    //   }
+    //   if (this.selectors[val] === '#contact') {
+    //     this.$router.push({ name: 'contact' })
+    //     return
+    //   }
+    //   if (this.selectors[val] === '#plans') {
+    //     this.$store.commit('CHANGE_PLAN', this.pages[this.page].toLowerCase())
+    //   }
+    //   if (this.selectors[val]) {
+    //     this.$vuetify.goTo(this.selectors[val], {
+    //       duration: 500,
+    //       offset: 0,
+    //       easing: 'easeInOutCubic'
+    //     })
+    //   }
     }
   },
   methods: {
