@@ -31,10 +31,9 @@
             color="buttons"
             dark
             rounded
-            width="220"
             height="48"
             class="submit-button px-auto mx-auto mt-12"
-            @click="action"
+            @click="$emit('update:page', 'contact')"
         >
             {{ faq.button }}
         </v-btn>
@@ -82,6 +81,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'FAQ',
+  props: ['page'],
   data () {
     return {
       panel: null
@@ -89,11 +89,6 @@ export default {
   },
   computed: {
     ...mapState('content', ['faq'])
-  },
-  methods: {
-    action () {
-      console.log('FAQ actions')
-    }
   }
 }
 </script>

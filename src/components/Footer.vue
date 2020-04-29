@@ -25,6 +25,7 @@
                       dark
                       color="#fff"
                       v-model="name"
+                      :rules="[rules.required]"
                 ></v-text-field>
               </v-card>
               <v-card flat class="transparent mx-1 my-1" v-if="viewportWidth > 420">
@@ -38,6 +39,7 @@
                       dark
                       color="#fff"
                       v-model="email"
+                      :rules="[rules.required, rules.email]"
                 ></v-text-field>
               </v-card>
               <v-card flat class="transparent mx-1 my-1" v-if="viewportWidth > 420">
@@ -77,6 +79,7 @@
 
     <FooterBottomContent v-if="viewportWidth >= 770" />
     <FooterBottomContentSmall  v-if="viewportWidth < 770" class="footer--bottom-content-small"/>
+    <Popup :opened.sync="popupOpened" />
   </v-container>
 </template>
 
@@ -143,18 +146,23 @@
 
 <script>
 
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 import FooterFone from '@/components/footer/FooterFone.vue'
 import FooterBottomContent from '@/components/footer/BottomContent.vue'
 import FooterBottomContentSmall from '@/components/footer/BottomContentSmall.vue'
+
+import Popup from '@/components/Popup.vue'
+
+const emailValidator = require('email-validator')
 
 export default {
   name: 'Footer',
   components: {
     FooterFone,
     FooterBottomContentSmall,
-    FooterBottomContent
+    FooterBottomContent,
+    Popup
   },
   props: {
     user: Object,
@@ -165,12 +173,17 @@ export default {
       name: '',
       email: '',
       phone: '',
-      send: false
+      send: false,
+      rules: {
+        required: value => !!value || 'Required',
+        email: () => emailValidator.validate(this.email) ? true : 'Invalid email'
+      },
+      popupOpened: false
     }
   },
   computed: {
     ...mapState(['viewportWidth']),
-    ...mapState('content', ['footer']),
+    ...mapState('content', ['footer', 'subject']),
     topContentTop () {
       return this.viewportWidth < 420 ? '80px' : this.viewportWidth > 1904 ? '288px' : '198px'
     },
@@ -182,13 +195,23 @@ export default {
     }
   },
   methods: {
+    ...mapActions('contact', { sendEmail: 'SEND_EMAIL' }),
+    initFields () {
+      this.name = ''
+      this.email = ''
+      this.phone = ''
+    },
     submit () {
-      if (!this.name || !this.phone) return
-      this.$emit('update:user', {
+      if (!this.name || !this.phone || !emailValidator.validate(this.email)) return
+      this.popupOpened = true
+      this.sendEmail({
+        subject: this.subject,
         name: this.name,
         email: this.email,
-        phone: this.phone
+        phone: this.phone,
+        message: 'Get Started'
       })
+      this.initFields()
     }
   }
 }

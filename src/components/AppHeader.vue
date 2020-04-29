@@ -19,45 +19,6 @@
       </span>
     </v-row>
   </v-system-bar>
-
-  <!-- Viewport width less then lg -->
-  <!-- <v-expansion-panels
-          tile
-          flat
-          v-model="panel"
-          class="app-bar d-lg-none"
-          width="100%"
-          style="position: fixed; margin-top: 40px; z-index: 10;"
-  >
-    <v-expansion-panel style="background: #FAFAFA">
-      <v-expansion-panel-header
-                    expand-icon="none"
-                    hide-actions
-                    height="70"
-          >
-            <span height="35" width="110" class="ml-2 ml-sm-4 ml-md-6">
-              <v-img src="@/assets/logo.svg" contain width="110" height="35"></v-img>
-            </span>
-            <v-btn text class="burger-menu" height="48" width="48">
-              <span :class="burgerMenuClassFirst"></span>
-              <span :class="burgerMenuClassSecond"></span>
-            </v-btn>
-      </v-expansion-panel-header>
-      <v-expansion-panel-content color="#FAFAFA">
-            <v-list flat class="main-menu-content text-center">
-              <v-list-item
-                  v-for="(page, index) in pages"
-                  :key="index"
-                  @click="$emit('update:selected', index); panel = []"
-              >
-                <v-list-item-title class="main-menu-items">{{ page }}</v-list-item-title>
-              </v-list-item>
-            </v-list>
-      </v-expansion-panel-content>
-    </v-expansion-panel>
-  </v-expansion-panels> -->
-
-  <!-- Viewport width wider or equal lg -->
     <v-card
             height="80"
             width="100%"
@@ -65,27 +26,10 @@
             class="homefone app-bar mt-10 pt-4"
             style="position: fixed; z-index: 5"
     >
-        <v-row align="center" justify="start">
-          <span height="45" width="150" class="ml-10">
-            <v-img src="@/assets/logo.svg" contain width="150" height="45"></v-img>
-          </span>
-          <!-- <v-spacer></v-spacer>
-      <v-btn-toggle
-            group
-            flat
-            class="mr-10 d-none d-lg-flex"
-            color="transparent"
-            v-model="toggle"
-      >
-        <v-btn text
-               v-for="(page, index) in pages"
-               :key="index"
-               :class="getClassName(page)"
-               @click="$emit('update:selected', index)">
-          <ContactUs v-if="page === 'Contact Us'" style="width: 50px; height:50px;" />
-              {{ page }}
-        </v-btn>
-      </v-btn-toggle> -->
+    <v-row align="center" justify="start">
+      <span height="45" width="150" class="ml-10">
+        <v-img src="@/assets/logo.svg" contain width="150" height="45"></v-img>
+      </span>
     </v-row>
   </v-card>
 </v-container>
@@ -121,36 +65,7 @@
 
 <script>
 
-// import ContactUs from '@/components/svg/ContactUsIcon'
-
 export default {
-  name: 'AppHeader',
-  components: {
-    // ContactUs
-  },
-  props: {
-    pages: Array,
-    selected: Number
-  },
-  data () {
-    return {
-      toggle: 0,
-      panel: undefined
-    }
-  },
-  computed: {
-    burgerMenuClassFirst () {
-      return this.panel === 0 ? 'burger-menu-active--first' : 'burger-menu--first'
-    },
-    burgerMenuClassSecond () {
-      return this.panel === 0 ? 'burger-menu-active--second' : 'burger-menu--second'
-    }
-  },
-  methods: {
-    getClassName (pageName) {
-      const className = pageName === 'Sign In' ? ' app-bar-menu-bordered py-2 px-12' : ''
-      return `app-bar-menu${className}`
-    }
-  }
+  name: 'AppHeader'
 }
 </script>

@@ -10,7 +10,8 @@ const state = {
     state: '',
     phone: '',
     message: ''
-  }
+  },
+  mailEndpoint: 'https://dka.dgtek.net/api/frontend/mail'
 }
 
 const getters = {
@@ -25,9 +26,17 @@ const mutations = {
 
 const actions = {
 
-  async SEND_MESSAGE ({ getters, commit }, file) {
-    // const result = await (await fetch(getters.endpoint)).text()
-    return true
+  async SEND_EMAIL ({ state }, data) {
+    const response = await (await fetch(state.mailEndpoint, {
+      method: 'POST',
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })).json()
+
+    return response.status
   }
 }
 

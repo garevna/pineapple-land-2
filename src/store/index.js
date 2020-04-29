@@ -17,7 +17,9 @@ export default new Vuex.Store({
     contactEndpoint: '',
     viewport: 'lg',
     viewportWidth: window.innerWidth,
-    viewportHeight: window.innerHeight
+    viewportHeight: window.innerHeight,
+    pages: ['plans', 'contact'],
+    plan: 'residential'
   },
   modules,
 

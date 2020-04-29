@@ -7,7 +7,7 @@
       </v-card-title>
 
       <v-slide-group
-        v-if="screen >= 600"
+        v-if="viewportWidth >= 600"
         v-model="model"
         class="pa-12"
         center-active
@@ -78,7 +78,7 @@
           width="220"
           height="48"
           class="submit-button px-auto mx-auto"
-          @click="action"
+          @click="$emit('update:page', 'plans')"
       >
           {{ content.button }}
       </v-btn>
@@ -119,23 +119,19 @@ export default {
   components: {
     TestimonialsCard
   },
-  data: () => ({
-    model: 0
-  }),
-
+  props: ['page'],
+  data: () => ({ model: 0 }),
   computed: {
     ...mapState('content', {
       content: 'testimonials'
     }),
     ...mapState('testimonials', ['testimonials']),
-    ...mapState({
-      screen: 'viewportWidth'
-    }),
+    ...mapState(['viewportWidth']),
     cardWidth () {
-      return this.screen < 600 ? this.screen - 100 : 376
+      return this.viewportWidth < 600 ? this.viewportWidth - 100 : 376
     },
     textSize () {
-      return this.screen < 600 ? '12px' : '14px'
+      return this.viewportWidth < 600 ? '12px' : '14px'
     }
   },
   methods: {

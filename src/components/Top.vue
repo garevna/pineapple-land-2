@@ -17,10 +17,9 @@
                 color="buttons"
                 dark
                 rounded
-                width="220"
                 height="48"
                 class="submit-button px-auto mx-auto"
-                @click="action"
+                @click="$emit('update:page', 'contact')"
             >
                 {{ top.button }}
             </v-btn>
@@ -56,17 +55,10 @@ import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'Top',
+  props: ['page'],
   computed: {
     ...mapState('content', ['top']),
     ...mapGetters(['familyPicture'])
-  },
-  methods: {
-    action () {
-      console.log('Action')
-    }
-  },
-  mounted () {
-    console.log(this.familyPicture)
   }
 }
 </script>

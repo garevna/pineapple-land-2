@@ -1,7 +1,7 @@
 <template>
   <v-app class="homefone">
     <v-container fluid class="homefone">
-      <AppHeader :pages="pages" :selected.sync="page"/>
+      <AppHeader :pages="[]" :selected.sync="page"/>
       <v-sheet
         width="100%"
         max-width="1440"
@@ -9,50 +9,64 @@
         tile
         class="mx-auto"
       >
-        <Top />
+        <Top :page.sync="page" />
       </v-sheet>
 
       <!-- ============================= USER CONTACT ============================= -->
 
       <v-row justify="center" class="pa-0 my-12">
-        <v-sheet
-          width="100%"
-          max-width="1440"
-          color="homefone"
-          tile
-          class="mx-auto"
-        >
-          <v-row class="mx-0 px-0">
-            <v-col cols="12" md="6" class="aside-col">
-              <Aside />
-            </v-col>
-            <v-col cols="12" md="6" class="mx-0 px-0">
-              <v-card flat class="transparent mx-0">
-                <!-- <v-img src="@/img/map-picture.svg" height="800" contain style="opacity:0.2;"></v-img> -->
-                <v-card
-                        flat
-                        class="user-contact transparent mx-auto pa-0"
-                        style="margin-bottom: 80px"
-                >
-                  <UserContact />
-                </v-card>
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-sheet>
+        <section id="contact" style="width: 100%">
+          <div class="base-title">
+            <a href="#plans" class="core-goto"></a>
+            <v-sheet
+                width="100%"
+                max-width="1440"
+                color="homefone"
+                tile
+                class="mx-auto"
+            >
+              <v-row class="mx-0 px-0">
+                <v-col cols="12" md="6" class="aside-col">
+                  <Aside />
+                </v-col>
+                <v-col cols="12" md="6" class="mx-0 px-0">
+                  <v-card flat class="transparent mx-0">
+                    <!-- <v-img src="@/img/map-picture.svg" height="800" contain style="opacity:0.2;"></v-img> -->
+                    <v-card
+                          flat
+                          class="user-contact transparent mx-auto pa-0"
+                          style="margin-bottom: 80px"
+                    >
+                      <UserContact />
+                    </v-card>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-sheet>
+          </div>
+        </section>
       </v-row>
 
       <!-- ============================= HOW TO CONNECT ============================= -->
       <v-row width="100%">
-        <HowToConnect :contact.sync="contactUs" :connect.sync="getConnected" />
+        <HowToConnect :page.sync="page" />
+      </v-row>
+      <!-- ============================= INTERNET PLANS ============================= -->
+      <v-row width="100%" justify="center">
+        <section id="plans">
+          <div class="base-title">
+            <a href="#plans" class="core-goto"></a>
+            <InternetPlans :page.sync="page"/>
+          </div>
+        </section>
       </v-row>
       <!-- ============================= TESTIMONIALS ============================= -->
       <v-row width="100%">
-        <Testimonials />
+        <Testimonials :page.sync="page"/>
       </v-row>
       <!-- ============================= FAQ ============================= -->
       <v-row width="100%">
-        <FAQ />
+        <FAQ :page.sync="page"/>
       </v-row>
       <!-- ============================= FOOTER ============================= -->
       <section id="footer" class="homefone">
@@ -147,7 +161,8 @@ svg.defs-only {
   font-weight: bold;
   font-size: 16px!important;
   line-height: 100%;
-  text-transform: capitalize;
+  text-transform: uppercase;
+  width: 340px;
 }
 
 @media (max-width: 600px), (max-height: 600px) {
@@ -163,7 +178,7 @@ svg.defs-only {
     width: 480px;
   }
   .submit-button {
-    font-size: 16px;
+    font-size: 14px!important;
   }
 }
 
@@ -175,11 +190,17 @@ svg.defs-only {
     font-size: 16px;
     font-weight: 100;
   }
+  p {
+    font-size: 14px!important;
+    width: 100%!important;
+  }
   .user-contact {
     width: 300px;
   }
   .submit-button {
-    font-size: 14px;
+    font-size: 13px!important;
+    width: 100%!important;
+    border-radius: 8px!important;
   }
 }
 
@@ -208,6 +229,7 @@ import Aside from '@/components/Aside.vue'
 import UserContact from '@/components/UserContact.vue'
 import HowToConnect from '@/components/HowToConnect.vue'
 import Testimonials from '@/components/Testimonials.vue'
+import InternetPlans from '@/components/InternetPlans.vue'
 import FAQ from '@/components/FAQ.vue'
 import Footer from '@/components/Footer.vue'
 
@@ -220,67 +242,33 @@ export default {
     UserContact,
     HowToConnect,
     Testimonials,
+    InternetPlans,
     FAQ,
     Footer
   },
   data () {
     return {
-      page: 0,
+      page: null,
       user: {
         name: '',
         email: '',
         phone: ''
       },
-      contactUs: false,
-      getConnected: false
+      plans: false
     }
   },
   computed: {
     ...mapState(['viewport', 'viewportWidth', 'pages', 'selectors'])
   },
   watch: {
-    contactUs (val) {
-      // if (val) this.$router.push({ name: 'contact' })
-    },
-    getConnected (val) {
-      // if (val) this.$router.push({ name: 'connect' })
-    },
-    business (val) {
-      if (val) {
-        // this.page = this.pages.indexOf('Business')
-      }
-    },
-    residential (val) {
-      // this.page = this.pages.indexOf('Residential')
-    },
     page (val) {
-    //   if (this.selectors[val] === '#connect') {
-    //     if (this.addressAvalable) {
-    //       this.$router.push({ name: 'connect' })
-    //     } else {
-    //       this.$vuetify.goTo('#check', {
-    //         duration: 500,
-    //         offset: 200,
-    //         easing: 'easeInOutCubic'
-    //       })
-    //     }
-    //     this.page = undefined
-    //     return
-    //   }
-    //   if (this.selectors[val] === '#contact') {
-    //     this.$router.push({ name: 'contact' })
-    //     return
-    //   }
-    //   if (this.selectors[val] === '#plans') {
-    //     this.$store.commit('CHANGE_PLAN', this.pages[this.page].toLowerCase())
-    //   }
-    //   if (this.selectors[val]) {
-    //     this.$vuetify.goTo(this.selectors[val], {
-    //       duration: 500,
-    //       offset: 0,
-    //       easing: 'easeInOutCubic'
-    //     })
-    //   }
+      if (!val) return
+      this.$vuetify.goTo(`#${val}`, {
+        duration: 500,
+        offset: 200,
+        easing: 'easeInOutCubic'
+      })
+      this.page = undefined
     }
   },
   methods: {

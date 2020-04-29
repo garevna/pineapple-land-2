@@ -19,14 +19,14 @@
             :append-icon="item.validationIcon"
             @input="validate(item)"
       ></v-text-field>
-      <!-- <v-textarea
+      <v-textarea
             :placeholder="userForm.messagePlaceholder"
             outlined
             color="#656565"
             auto-grow
             v-model="message"
             class="user-inputs"
-      ></v-textarea> -->
+      ></v-textarea>
     </v-card-text>
     <v-card-actions class="text-center">
       <v-btn
@@ -96,7 +96,7 @@ h4 {
 
 <script>
 
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 import Popup from '@/components/Popup.vue'
 
@@ -116,7 +116,7 @@ export default {
       items: {
         name: {
           value: '',
-          placeholder: 'Name*',
+          placeholder: 'Full name*',
           error: false,
           color: '',
           validationIcon: '',
@@ -134,32 +134,32 @@ export default {
             this.color = this.error ? '#FF0E00' : '#656565'
           }
         },
-        address: {
-          value: '',
-          placeholder: 'Address*',
-          error: false,
-          color: '',
-          validationIcon: '',
-          validator () { this.error = this.value.length < 5 }
-        },
-        postcode: {
-          value: '',
-          placeholder: 'Postcode*',
-          error: false,
-          color: '',
-          validationIcon: '',
-          validator () {
-            this.error = !Number(this.value) || Number(this.value) < 3000 || Number(this.value) > 9999
-          }
-        },
-        state: {
-          value: '',
-          placeholder: 'State*',
-          error: false,
-          color: '',
-          validationIcon: '',
-          validator () { this.error = this.value.length < 5 }
-        },
+        //   address: {
+        //     value: '',
+        //     placeholder: 'Address*',
+        //     error: false,
+        //     color: '',
+        //     validationIcon: '',
+        //     validator () { this.error = this.value.length < 5 }
+        //   },
+        //   postcode: {
+        //     value: '',
+        //     placeholder: 'Postcode*',
+        //     error: false,
+        //     color: '',
+        //     validationIcon: '',
+        //     validator () {
+        //       this.error = !Number(this.value) || Number(this.value) < 3000 || Number(this.value) > 9999
+        //     }
+        //   },
+        //   state: {
+        //     value: '',
+        //     placeholder: 'State*',
+        //     error: false,
+        //     color: '',
+        //     validationIcon: '',
+        //     validator () { this.error = this.value.length < 5 }
+        //   },
         phone: {
           value: '',
           placeholder: 'Phone',
@@ -170,9 +170,11 @@ export default {
     }
   },
   computed: {
-    ...mapState('content', ['userForm'])
+    ...mapState('content', ['userForm']),
+    ...mapState(['subject'])
   },
   methods: {
+    ...mapActions('contact', { sendEmail: 'SEND_EMAIL' }),
     initFields () {
       for (const item in this.items) {
         this.items[item].validationIcon = ''
@@ -188,6 +190,7 @@ export default {
       item.validationIcon = item.error ? '$invalid' : '$valid'
       item.color = item.error ? this.errorColor : this.normalColor
     },
+
     findErrors () {
       let counter = 0
       for (const item in this.items) {
@@ -196,23 +199,17 @@ export default {
       }
       return counter > 0
     },
+
     async sendUserRequest () {
       if (this.findErrors()) return
       this.popupOpened = true
-      await (await fetch('https://dka.dgtek.net/api/frontend/mail', {
-        method: 'POST',
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: this.items.name.value,
-          email: this.items.email.value,
-          phone: '...',
-          subject: 'COVID-19: DGTek helping The Community',
-          message: `Your address: ${this.items.address.value}, ${this.items.postcode.value}, ${this.items.state.value}\nYour message:\n${this.message}`
-        })
-      })).json()
+      this.sendEmail({
+        subject: this.subject,
+        name: this.items.name.value,
+        email: this.items.email.value,
+        phone: this.items.phone.value,
+        message: this.message
+      })
 
       this.initFields()
     }

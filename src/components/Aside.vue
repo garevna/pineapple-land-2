@@ -13,12 +13,12 @@
       </p>
     </v-card-text>
     <v-card-text>
-      <p class="text-left"><b>{{  }}</b></p>
       <h5
             v-for="(item, index) in info.offer"
             :key="index"
+            style="margin-bottom: 16px"
       >
-        {{ item.blackText }} <span style="color: #72BF44"> {{ item.greenText }}</span>
+        <strong style="color: #72BF44; margin-right: 8px;">{{ item.greenText }}</strong>{{ item.blackText }}
       </h5>
     </v-card-text>
     <v-card-text class="my-12">
@@ -36,6 +36,9 @@
 }
 .small {
   font-size: 14px;
+}
+strong {
+  font-weight: 600;
 }
 
 @media screen and (max-width: 900px) {
