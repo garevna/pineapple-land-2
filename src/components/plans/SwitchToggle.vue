@@ -17,6 +17,9 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  font-family: 'Gilroy';
+  font-size: 22px!important;
+  font-weight: 600!important;
 }
 
 .switch {
@@ -30,17 +33,15 @@
   position: absolute;
   top: 20px;
   color: #fff;
-  font-family: 'Gilroy';
-  font-size: 16px;
   z-index:0;
   cursor: pointer;
 }
 
 .text-left {
-  left: 48px;
+  left: 40px;
 }
 .text-right {
-  right: 48px;
+  right: 40px;
 }
 
 .switch input {
@@ -69,9 +70,8 @@
 
 .slider:before {
   position: absolute;
-  font-family: 'Gilroy';
   color: #72BF44;
-  padding: 18px 0;
+  padding: 16px 0;
   text-align: center;
   border-radius: 36px;
   -webkit-box-sizing: border-box;
@@ -155,21 +155,22 @@ input:checked + .slider {
 }
 
 @media screen and (max-width: 400px) {
+  * {
+    font-size: 16px!important;
+  }
   .switch {
     width: 300px;
     height: 48px;
   }
   .switch > span.text {
-    top: 12px;
-    font-size: 14px;
+    top: 13px;
   }
   .slider {
     border-radius: 32px;
     padding: 12px 0;
-    font-size: 14px;
   }
   .slider:before {
-    padding: 12px 0;
+    padding: 10px 0;
     border-radius: 32px;
     height: 42px;
     width: 150px;

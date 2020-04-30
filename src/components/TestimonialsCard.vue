@@ -53,7 +53,7 @@ p {
 .testimonial-date {
   position: absolute;
   bottom: 4px;
-  left: 12px;
+  left: 24px;
   font-size: 12px;
   font-weight: normal;
 }
