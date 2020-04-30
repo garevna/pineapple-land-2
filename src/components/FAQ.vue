@@ -22,7 +22,7 @@
             </template>
           </v-expansion-panel-header>
           <v-expansion-panel-content>
-            <p class="text-justify py-4">{{ item.answer }}</p>
+            <p class="text-justify py-4" v-html="item.answer"></p>
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>

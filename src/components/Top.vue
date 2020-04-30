@@ -41,6 +41,9 @@
   margin-top: 120px;
   margin-bottom: 64px;
 }
+p {
+  line-height: 180%!important;
+}
 @media screen and (max-width: 500px) {
   .top-element {
     margin-top: 80px;

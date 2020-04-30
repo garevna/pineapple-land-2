@@ -14,38 +14,38 @@
 
       <!-- ============================= USER CONTACT ============================= -->
 
-      <v-row justify="center" class="pa-0 my-12">
-        <section id="contact" style="width: 100%">
-          <div class="base-title">
-            <a href="#plans" class="core-goto"></a>
-            <v-sheet
-                width="100%"
-                max-width="1440"
-                color="homefone"
-                tile
-                class="mx-auto"
-            >
-              <v-row class="mx-0 px-0">
-                <v-col cols="12" md="6" class="aside-col">
-                  <Aside />
-                </v-col>
-                <v-col cols="12" md="6" class="mx-0 px-0">
+      <v-sheet
+          width="100%"
+          max-width="1440"
+          color="homefone"
+          tile
+          class="mx-auto"
+      >
+        <v-row align="center" class="mx-0 px-0">
+          <v-col cols="12" md="6" class="aside-col">
+            <Aside />
+          </v-col>
+          <v-col cols="12" md="6" class="mx-0 px-0">
+            <v-row align="center" justify="center" class="pa-0 my-12">
+              <section id="contact" style="width: 100%">
+                <div class="base-title">
+                  <a href="#contact" class="core-goto"></a>
                   <v-card flat class="transparent mx-0">
                     <!-- <v-img src="@/img/map-picture.svg" height="800" contain style="opacity:0.2;"></v-img> -->
-                    <v-card
-                          flat
-                          class="user-contact transparent mx-auto pa-0"
-                          style="margin-bottom: 80px"
-                    >
-                      <UserContact />
+                      <v-card
+                            flat
+                            class="user-contact transparent mx-auto pa-0"
+                            style="margin-bottom: 80px"
+                      >
+                        <UserContact />
+                      </v-card>
                     </v-card>
-                  </v-card>
-                </v-col>
+                  </div>
+                </section>
               </v-row>
-            </v-sheet>
-          </div>
-        </section>
-      </v-row>
+          </v-col>
+        </v-row>
+      </v-sheet>
 
       <!-- ============================= HOW TO CONNECT ============================= -->
       <v-row width="100%">
@@ -126,13 +126,13 @@ h5 {
   font-size: 20px;
 }
 h4, h5 {
-  font-weight: 300;
+  font-weight: 600;
 }
 
 p {
   font-size: 16px;
   font-weight: normal;
-  line-height: 150%;
+  line-height: 180%;
   letter-spacing: 0.02em;
 }
 
@@ -171,7 +171,6 @@ svg.defs-only {
   h3 { font-size: 20px; }
   h4, h5 {
     font-size: 18px;
-    font-weight: 200;
   }
   p { font-size: 16px; }
   .user-contact {
@@ -188,7 +187,6 @@ svg.defs-only {
   h3 { font-size: 20px; }
   h4, h5 {
     font-size: 16px;
-    font-weight: 100;
   }
   p {
     font-size: 14px!important;

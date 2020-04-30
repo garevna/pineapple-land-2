@@ -22,18 +22,14 @@
       </h5>
     </v-card-text>
     <v-card-text class="my-12">
-      <p class="small text-left">Pineapple NET is powered by
-          <v-img src="@/assets/dgtek-logo.png" width="50" style="display: inline-block; vertical-align: middle;"></v-img>
-      </p>
+      <span class="small text-left" style="margin-right: 16px">Pineapple NET is powered by</span>
+      <v-img src="@/assets/dgtek-logo.png" width="50" style="display: inline-block; vertical-align: middle;"></v-img>
     </v-card-text>
   </v-card>
 </template>
 
 <style scoped>
 
-.aside-card {
-
-}
 .small {
   font-size: 14px;
 }

@@ -164,10 +164,7 @@ export default {
     FooterBottomContent,
     Popup
   },
-  props: {
-    user: Object,
-    page: Number
-  },
+  props: ['user', 'page'],
   data () {
     return {
       name: '',
@@ -202,7 +199,10 @@ export default {
       this.phone = ''
     },
     submit () {
-      if (!this.name || !this.phone || !emailValidator.validate(this.email)) return
+      if (!this.name || !this.phone || !emailValidator.validate(this.email)) {
+        this.$emit('update:page', 'contact')
+        return
+      }
       this.popupOpened = true
       this.sendEmail({
         subject: this.subject,

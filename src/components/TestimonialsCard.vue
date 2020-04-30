@@ -10,6 +10,10 @@
 
 <style scoped>
 
+p {
+  line-height: 150%!important;
+}
+
 .testimonial-name,
 .testimonial-text,
 .testimonial-date,
@@ -33,8 +37,8 @@
 .testimonial-text {
   position: absolute;
   top: 80px;
-  left: 20px;
-  width: calc(100% - 40px);
+  width: 80%!important;
+  left: 10%;
   height: 86px;
   overflow: hidden;
   text-align: justify;
@@ -43,7 +47,7 @@
 .testimonial-text-ellipsis {
   position: absolute;
   top: 166px;
-  left: 20px;
+  left: 10%;
   text-align: left;
 }
 .testimonial-date {
