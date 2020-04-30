@@ -2,9 +2,10 @@
 /* eslint-disable no-shadow */
 
 const state = {
-  subject: 'Melbourne’s Juiciest Internet',
+  subject: 'Melbourne’s Fastest Internet',
+  textForUserMail: 'Thank you for your interest in Pineapple NET! A member of our team will be in touch shortly.',
   top: {
-    header: 'Melbourne’s Juiciest Internet',
+    header: 'Melbourne’s Fastest Internet',
     text: 'We are the Aussie ISP who doesn’t act like it. We’ve ditched the NBN, removed our data caps and lowered our prices for affordable fibre you can feel good about. Imagine, no more dropouts or pauses. Heck! No more resetting the router. Humblebrag. This is Melbourne’s best internet. What are you going to do about it?',
     button: 'Get Fibre and Never Look Back'
   },
@@ -28,8 +29,8 @@ const state = {
     button: 'Go Lightspeed'
   },
   howToConnect: {
-    header: 'Fibre Optics',
-    text: 'The Futureproof Internet Melbourne Needed Yesterday',
+    header: 'Fibre Optics. The Futureproof Internet Melbourne Needed Yesterday',
+    text: '',
     items: [
       {
         title: 'Stream Like You Own It',
@@ -51,7 +52,7 @@ const state = {
   },
   faq: {
     header: 'We’ve Answered Some Common Questions',
-    button: 'Get Fibre and Never Look Back',
+    button: 'Get in Touch',
     items: [
       {
         question: 'How can you sell fibre internet in Melbourne?',

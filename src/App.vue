@@ -1,7 +1,7 @@
 <template>
   <v-app class="homefone">
     <v-container fluid class="homefone">
-      <AppHeader :pages="[]" :selected.sync="page"/>
+      <AppHeader :page.sync="page"/>
       <v-sheet
         width="100%"
         max-width="1440"
@@ -23,7 +23,12 @@
       >
         <v-row align="center" class="mx-0 px-0">
           <v-col cols="12" md="6" class="aside-col">
-            <Aside />
+            <section id="benefits" style="width: 100%">
+              <div class="base-title">
+                <a href="#benefits" class="core-goto"></a>
+                <Aside />
+              </div>
+            </section>
           </v-col>
           <v-col cols="12" md="6" class="mx-0 px-0">
             <v-row align="center" justify="center" class="pa-0 my-12">
@@ -66,7 +71,12 @@
       </v-row>
       <!-- ============================= FAQ ============================= -->
       <v-row width="100%">
-        <FAQ :page.sync="page"/>
+        <section id="faq" style="width: 100%">
+          <div class="base-title">
+            <a href="#faq" class="core-goto"></a>
+            <FAQ :page.sync="page"/>
+          </div>
+        </section>
       </v-row>
       <!-- ============================= FOOTER ============================= -->
       <section id="footer" class="homefone">

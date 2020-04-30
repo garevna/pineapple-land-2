@@ -17,6 +17,9 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  font-family: 'Gilroy';
+  font-size: 18px!important;
+  font-weight: 600!important;
 }
 
 .switch {
@@ -30,8 +33,6 @@
   position: absolute;
   top: 20px;
   color: #fff;
-  font-family: 'Gilroy';
-  font-size: 16px;
   z-index:0;
   cursor: pointer;
 }
@@ -69,7 +70,9 @@
 
 .slider:before {
   position: absolute;
-  font-family: 'Gilroy';
+  /* font-family: 'Gilroy';
+  font-size: 18px!important;
+  font-weight: 600!important; */
   color: #72BF44;
   padding: 18px 0;
   text-align: center;
@@ -97,21 +100,22 @@ input:checked + .slider {
           box-shadow: 0px 0px 2px #0009;
 }
 
-.slider.business:before {
-  content: 'Business';
+.slider.business:before,
+.slider.residential:before {
+  /* font-size: 18px!important;
+  font-weight: 600!important; */
   -webkit-animation: switch-on-wide 0.5s ease forwards;
           animation: switch-on-wide 0.5s ease forwards;
   -webkit-transition: .4s;
        -o-transition: .4s;
           transition: .4s;
 }
+
+.slider.business:before {
+  content: 'Business';
+}
 .slider.residential:before {
   content: 'Residential';
-  -webkit-animation: switch-off-wide 0.5s ease forwards;
-          animation: switch-off-wide 0.5s ease forwards;
-  -webkit-transition: .4s;
-       -o-transition: .4s;
-          transition: .4s;
 }
 
 @-webkit-keyframes switch-on-wide {
@@ -159,14 +163,16 @@ input:checked + .slider {
     width: 300px;
     height: 48px;
   }
+  * {
+    font-size: 16px;
+    font-weight: 300;
+  }
   .switch > span.text {
     top: 12px;
-    font-size: 14px;
   }
   .slider {
     border-radius: 32px;
     padding: 12px 0;
-    font-size: 14px;
   }
   .slider:before {
     padding: 12px 0;
