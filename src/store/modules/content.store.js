@@ -18,7 +18,7 @@ const state = {
         greenText: 'Committed'
       },
       {
-        blackText: 'Pay $99 for the fibre connection and leave us whenever you want. No contract.',
+        blackText: 'Pay $99 for the fibre connection & router and leave us whenever you want. No contract.',
         greenText: 'Flexible'
       }
     ]

@@ -11,7 +11,7 @@ const state = {
     phone: '',
     message: ''
   },
-  mailEndpoint: 'https://dka.dgtek.net/api/frontend/mail'
+  mailEndpoint: 'https://api.pineapple.net.au/email/landing'
 }
 
 const getters = {

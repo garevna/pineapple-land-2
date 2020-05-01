@@ -170,8 +170,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('content', ['userForm']),
-    ...mapState(['subject'])
+    ...mapState('content', ['userForm', 'subject', 'textForUserMail'])
   },
   methods: {
     ...mapActions('contact', { sendEmail: 'SEND_EMAIL' }),
@@ -205,10 +204,13 @@ export default {
       this.popupOpened = true
       this.sendEmail({
         subject: this.subject,
-        name: this.items.name.value,
         email: this.items.email.value,
-        phone: this.items.phone.value,
-        message: this.message
+        message: `${this.textForUserMail}
+        <h3>Name: ${this.items.name.value}</h3>
+        <h4>Email: ${this.items.email.value}</h4>
+        <h4>Phone: ${this.items.phone.value}</h4>
+        <h4>Message:</h4>
+        <p>${this.message.split('\n').join('<br>')}</p>`
       })
 
       this.initFields()
