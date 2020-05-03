@@ -1,31 +1,34 @@
 # pineapple.net
 
-[**demo**](https://garevna.github.io/pineapple.net/)
+###### Landing page for pineapple.net.au
 
-## Project setup
+[**demo 1**](https://garevna.github.io/pineapple-land/#1)
+[**demo 2**](https://garevna.github.io/pineapple-land/#2)
+
+### Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+#### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+#### Compiles and minifies for production
 ```
 npm run build
 ```
 
-### Run your unit tests
+#### Run your unit tests
 ```
 npm run test:unit
 ```
 
-### Lints and fixes files
+#### Lints and fixes files
 ```
 npm run lint
 ```
 
-### Customize configuration
+#### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
