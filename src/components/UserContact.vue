@@ -19,6 +19,14 @@
             :append-icon="item.validationIcon"
             @input="validate(item)"
       ></v-text-field>
+
+      <v-select
+          :items="['VIC', 'NSW', 'ACT', 'QLD', 'SA', 'WA', 'TAS', 'NT']"
+          outlined
+          v-model="state"
+          label="State"
+        ></v-select>
+
       <v-textarea
             :placeholder="userForm.messagePlaceholder"
             outlined
@@ -110,6 +118,7 @@ export default {
   data () {
     return {
       message: '',
+      state: null,
       normalColor: '#656565',
       errorColor: '#FF0E00',
       popupOpened: false,
@@ -134,32 +143,32 @@ export default {
             this.color = this.error ? '#FF0E00' : '#656565'
           }
         },
-        //   address: {
-        //     value: '',
-        //     placeholder: 'Address*',
-        //     error: false,
-        //     color: '',
-        //     validationIcon: '',
-        //     validator () { this.error = this.value.length < 5 }
-        //   },
-        //   postcode: {
-        //     value: '',
-        //     placeholder: 'Postcode*',
-        //     error: false,
-        //     color: '',
-        //     validationIcon: '',
-        //     validator () {
-        //       this.error = !Number(this.value) || Number(this.value) < 3000 || Number(this.value) > 9999
-        //     }
-        //   },
-        //   state: {
-        //     value: '',
-        //     placeholder: 'State*',
-        //     error: false,
-        //     color: '',
-        //     validationIcon: '',
-        //     validator () { this.error = this.value.length < 5 }
-        //   },
+        address: {
+          value: '',
+          placeholder: 'Address*',
+          error: false,
+          color: '',
+          validationIcon: '',
+          validator () { this.error = this.value.length < 5 }
+        },
+        postcode: {
+          value: '',
+          placeholder: 'Postcode*',
+          error: false,
+          color: '',
+          validationIcon: '',
+          validator () {
+            this.error = !Number(this.value) || Number(this.value) < 3000 || Number(this.value) > 9999
+          }
+        },
+        // state: {
+        //   value: '',
+        //   placeholder: 'State*',
+        //   error: false,
+        //   color: '',
+        //   validationIcon: '',
+        //   validator () { this.error = this.value.length < 5 }
+        // },
         phone: {
           value: '',
           placeholder: 'Phone',
@@ -170,7 +179,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('content', ['userForm', 'subject', 'textForUserMail'])
+    ...mapState('content', ['userForm', 'emailSubject', 'emailText'])
   },
   methods: {
     ...mapActions('contact', { sendEmail: 'SEND_EMAIL' }),
@@ -181,6 +190,7 @@ export default {
         this.items[item].color = this.normalColor
         this.items[item].value = ''
       }
+      this.state = null
       this.message = ''
     },
     validate (item) {
@@ -202,15 +212,24 @@ export default {
     async sendUserRequest () {
       if (this.findErrors()) return
       this.popupOpened = true
+      const message = `
+        <p>${this.emailText}</p>
+        <h3>Your name: ${this.items.name.value}</h3>
+        <h4>Your email: ${this.items.email.value}</h4>
+        <h4>Your phone: ${this.items.phone.value}</h4>
+        <fieldset>
+          <legend>Details:</legend>
+          <p>${this.items.address.value ? this.items.address.value : ''}</p>
+          <p>${this.items.postcode.value ? this.items.postcode.value : ''}</p>
+          <p>${this.state ? this.state : ''}</p>
+        </fieldset>
+        <h4>Your message:</h4>
+        <p>${this.message.split('\n').join('<br>')}</p>
+      `
       this.sendEmail({
-        subject: this.subject,
+        subject: this.emailSubject,
         email: this.items.email.value,
-        message: `${this.textForUserMail}
-        <h3>Name: ${this.items.name.value}</h3>
-        <h4>Email: ${this.items.email.value}</h4>
-        <h4>Phone: ${this.items.phone.value}</h4>
-        <h4>Message:</h4>
-        <p>${this.message.split('\n').join('<br>')}</p>`
+        message
       })
 
       this.initFields()

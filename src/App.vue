@@ -1,7 +1,7 @@
 <template>
   <v-app class="homefone">
-    <v-container fluid class="homefone">
-      <AppHeader :page.sync="page"/>
+    <v-container fluid class="homefone" v-if="ready">
+      <AppHeader :pages="pages" :page.sync="page" />
       <v-sheet
         width="100%"
         max-width="1440"
@@ -9,8 +9,22 @@
         tile
         class="mx-auto"
       >
-        <Top :page.sync="page" />
+        <section id="top" style="width: 100%">
+          <div class="base-title">
+            <a href="#top" class="core-goto"></a>
+            <Top :page.sync="page" />
+          </div>
+        </section>
+
       </v-sheet>
+      <!-- ============================= TESTIMONIALS ============================= -->
+
+      <section id="testimonials" style="width: 100%">
+        <div class="base-title">
+          <a href="#testimonials" class="core-goto"></a>
+          <Testimonials :page.sync="page"/>
+        </div>
+      </section>
 
       <!-- ============================= USER CONTACT ============================= -->
 
@@ -53,22 +67,18 @@
       </v-sheet>
 
       <!-- ============================= HOW TO CONNECT ============================= -->
-      <v-row width="100%">
+      <!-- <v-row width="100%">
         <HowToConnect :page.sync="page" />
-      </v-row>
+      </v-row> -->
       <!-- ============================= INTERNET PLANS ============================= -->
-      <v-row width="100%" justify="center">
+      <!-- <v-row width="100%" justify="center">
         <section id="plans">
           <div class="base-title">
             <a href="#plans" class="core-goto"></a>
             <InternetPlans :page.sync="page"/>
           </div>
         </section>
-      </v-row>
-      <!-- ============================= TESTIMONIALS ============================= -->
-      <v-row width="100%">
-        <Testimonials :page.sync="page"/>
-      </v-row>
+      </v-row> -->
       <!-- ============================= FAQ ============================= -->
       <v-row width="100%">
         <section id="faq" style="width: 100%">
@@ -229,15 +239,15 @@ svg.defs-only {
 
 <script>
 
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 import AppHeader from '@/components/AppHeader.vue'
 import Top from '@/components/Top.vue'
 import Aside from '@/components/Aside.vue'
 import UserContact from '@/components/UserContact.vue'
-import HowToConnect from '@/components/HowToConnect.vue'
+// import HowToConnect from '@/components/HowToConnect.vue'
 import Testimonials from '@/components/Testimonials.vue'
-import InternetPlans from '@/components/InternetPlans.vue'
+// import InternetPlans from '@/components/InternetPlans.vue'
 import FAQ from '@/components/FAQ.vue'
 import Footer from '@/components/Footer.vue'
 
@@ -248,14 +258,15 @@ export default {
     Top,
     Aside,
     UserContact,
-    HowToConnect,
+    // HowToConnect,
     Testimonials,
-    InternetPlans,
+    // InternetPlans,
     FAQ,
     Footer
   },
   data () {
     return {
+      ready: false,
       page: null,
       user: {
         name: '',
@@ -266,12 +277,26 @@ export default {
     }
   },
   computed: {
-    ...mapState(['viewport', 'viewportWidth', 'pages', 'selectors'])
+    ...mapState(['viewport', 'viewportWidth', 'pages', 'selectors']),
+    ...mapState('content', {
+      title: 'browserTabTitle',
+      subject: 'emailSubject',
+      emailText: 'emailText',
+      // pages: 'mainNavButtons',
+      // selectors: 'selectors',
+      top: 'top',
+      info: 'info',
+      userForm: 'userForm',
+      howToConnect: 'howToConnect',
+      testimonials: 'testimonials',
+      faq: 'faq',
+      footer: 'footer'
+    })
   },
   watch: {
     page (val) {
       if (!val) return
-      this.$vuetify.goTo(`#${val}`, {
+      this.$vuetify.goTo(val, {
         duration: 500,
         offset: 200,
         easing: 'easeInOutCubic'
@@ -280,9 +305,27 @@ export default {
     }
   },
   methods: {
+    ...mapActions('content', {
+      getContent: 'GET_DATA'
+    }),
+    ...mapActions('testimonials', {
+      getTestimonials: 'GET_CONTENT'
+    }),
     onResize () {
       this.$store.commit('CHANGE_VIEWPORT')
     }
+  },
+  beforeMount () {
+    this.getContent()
+      .then((response) => {
+        this.ready = !!response
+        document.title = response
+        this.$store.commit('UPDATE_PAGES', {
+          pages: this.$store.state.content.mainNavButtons,
+          selectors: this.$store.state.content.selectors
+        })
+      })
+    this.getTestimonials()
   },
   mounted () {
     this.onResize()

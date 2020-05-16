@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    host: 'https://garevna.github.io/pineapple.net',
+    host: 'https://pineapple-net-land.glitch.me/',
     landhost: `${location.origin}${location.pathname}`,
     officeAddress: '75 Brighton Road, Elwood VIC 3184',
     officePhone: '1300 857 501',
@@ -18,21 +18,24 @@ export default new Vuex.Store({
     viewport: 'lg',
     viewportWidth: window.innerWidth,
     viewportHeight: window.innerHeight,
-    pages: ['Benefits', 'Internet Plans', 'FAQs', 'Contact Us'],
-    selectors: ['benefits', 'plans', 'faq', 'contact'],
-    plan: 'residential'
+    pages: [],
+    selectors: []
   },
   modules,
 
-  getters: {
-    familyPicture: (state) => {
-      const size = state.viewportWidth < 600 ? 'small' : state.viewportWidth < 1440 ? 'medium' : 'large'
-      const num = location.hash ? location.hash.slice(1) : '1'
-      return `${state.landhost}/img/family-${size}-${num}.png`
-    }
-  },
+  // getters: {
+  //   familyPicture: (state) => {
+  //     const size = state.viewportWidth < 600 ? 'small' : state.viewportWidth < 1440 ? 'medium' : 'large'
+  //     const num = location.hash ? location.hash.slice(1) : '1'
+  //     return `${state.landhost}/img/family-${size}-${num}.png`
+  //   }
+  // },
 
   mutations: {
+    UPDATE_PAGES: (state, payload) => {
+      state.pages = payload.pages
+      state.selectors = payload.selectors
+    },
     CHANGE_VIEWPORT: (state) => {
       state.viewport = window.innerWidth >= 1904 ? 'xl'
         : window.innerWidth >= 1264 ? 'lg'
@@ -45,17 +48,6 @@ export default new Vuex.Store({
     CHANGE_VIEWPORT_HEIGHT: (state, height) => { state.viewportHeight = height },
 
     CHANGE_PLAN: (state, plan) => { state.plan = plan },
-
-    ERROR_HANDLER: (state, { moduleName, error }) => {
-      state.errorsLog.push({
-        module: moduleName,
-        error,
-        time: new Date().getTime()
-      })
-    },
-    ERRORS_CLEAR: (state) => {
-      state.errorsLog = []
-    },
     SET_PROPERTY: (state, payload) => {
       Vue.set(payload.object, payload.propertyName, payload.value)
     },

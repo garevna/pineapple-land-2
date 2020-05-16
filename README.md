@@ -1,9 +1,8 @@
-# pineapple.net
+# pineapple-land-2
 
 ###### Landing page for pineapple.net.au
 
-[**demo 1**](https://garevna.github.io/pineapple-land/#1)
-[**demo 2**](https://garevna.github.io/pineapple-land/#2)
+[**demo**](https://garevna.github.io/pineapple-land-2)
 
 ### Project setup
 ```

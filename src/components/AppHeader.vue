@@ -160,7 +160,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'AppHeader',
-  props: ['page'],
+  props: ['pages', 'page'],
   data () {
     return {
       toggle: 0,
@@ -168,7 +168,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['pages', 'selectors']),
+    ...mapState('content', ['mainNavButtons', 'selectors']),
     burgerMenuClassFirst () {
       return this.panel === 0 ? 'burger-menu-active--first' : 'burger-menu--first'
     },
